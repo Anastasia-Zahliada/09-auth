@@ -1,3 +1,4 @@
+import type { AxiosResponse } from 'axios'
 import { api } from './api'
 import type { FetchNotesParams, FetchNotesResponse } from './clientApi'
 import type { Note } from '@/types/note'
@@ -43,11 +44,13 @@ export const getMe = async (cookie: string): Promise<User> => {
   return response.data
 }
 
-export const checkSession = async (cookie: string): Promise<boolean> => {
+export const checkSession = async (
+  cookie: string
+): Promise<AxiosResponse<SessionResponse>> => {
   const response = await api.get<SessionResponse>(
     '/auth/session',
     createServerConfig(cookie)
   )
 
-  return response.data.success
+  return response
 }

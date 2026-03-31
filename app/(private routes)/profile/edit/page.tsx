@@ -62,7 +62,7 @@ export default function EditProfilePage() {
           className={css.avatar}
         />
 
-        <form className={css.profileInfo}>
+        <form className={css.profileInfo} action={handleSubmit}>
           <div className={css.usernameWrapper}>
             <label htmlFor="username">Username:</label>
             <input
@@ -81,7 +81,6 @@ export default function EditProfilePage() {
             <button
               type="submit"
               className={css.saveButton}
-              formAction={handleSubmit}
               disabled={updateProfileMutation.isPending}
             >
               Save
@@ -89,7 +88,7 @@ export default function EditProfilePage() {
             <button
               type="button"
               className={css.cancelButton}
-              onClick={() => router.push('/profile')}
+              onClick={() => router.back()}
             >
               Cancel
             </button>
